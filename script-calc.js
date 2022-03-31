@@ -105,21 +105,6 @@ decimal.addEventListener("click", (event) => {
     updateScreen(currentNumb)
 })
 
-const percent = document.querySelector(".percentage");
 
-percent.addEventListener("click", (event) => {
-    percentb()
-});
-
-percent = (bonus) =>{
-    if (prevNumb === "") {
-        currentNumb = currentNumb/100;
-        updateScreen(currentNumb);
-    } 
-    if (prevNumb !== "") {
-        currentNumb = (prevNumb*currentNumb)/100;
-        updateScreen(currentNumb);
-    }
-};
 
 
