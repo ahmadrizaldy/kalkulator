@@ -1,7 +1,9 @@
+
 const calculatorScreen = document.querySelector(".calculator-screen");
 const updateScreen = (number) => {    
     calculatorScreen.value = number
 }
+//buat ambil tombol number
 const numbers = document.querySelectorAll(".number");
 numbers.forEach((number) => {    
     number.addEventListener("click", (event) => {
@@ -12,7 +14,7 @@ numbers.forEach((number) => {
 let prevNumb = "";
 let calcOperat = "";
 let currentNumb = "0";
-
+// ini biar input angkanya bisa lebih dari 1digit
 const inputNumber = (number) => {
     if (currentNumb === "0"){
         currentNumb = number
@@ -35,7 +37,7 @@ operators.forEach((opert) => {
        
     })
 })
-
+// ini buat operator
 const inputOperators = (opert) => {      
     prevNumb = currentNumb
     calcOperat= opert 
@@ -43,9 +45,10 @@ const inputOperators = (opert) => {
 
     if(calcOperat === ""){
         prevNumb= currentNumb        
-    } 
+    } else{
     calcOperat = opert
     currentNumb = "0"
+}
 }
 
 
@@ -55,11 +58,12 @@ equalsymb.addEventListener("click", () =>{
     updateScreen(currentNumb)
     
 })
+// ini masih bingung kalo operatornya dipencet lebih dari 1 kali (biar jadi mau berapakalipun dipencet operatornya, harusnya ke pencet 1 kali)
 const calculation = () => {
     let result = ""    
     switch(calcOperat){
         case "+": 
-            result = parseFloat (prevNumb) + parseFloat (currentNumb)
+            result = parseFloat (prevNumb) + parseFloat (currentNumb) // pake parseFloat biar bisa ngitung decimal
             break
         case "-":
             result = parseFloat (prevNumb) - parseFloat (currentNumb)
@@ -88,7 +92,7 @@ ACBtn.addEventListener("click", () => {
     clearAll()
     updateScreen(currentNumb)
 })
- 
+// ini biar kalo input . jadi apik 
 inputDecimal = (dot) => {
    if (currentNumb.includes(".")){
        return;
@@ -100,6 +104,7 @@ decimal.addEventListener("click", (event) => {
     inputDecimal(event.target.value)
     updateScreen(currentNumb)
 })
+
 const percent = document.querySelector(".percentage");
 
 percent.addEventListener("click", (event) => {
